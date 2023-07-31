@@ -8,17 +8,24 @@
     <div class="row">
         <div class="card shadow mb-4">
             <!-- Card Header - Accordion -->
-            <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
-                role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
-            </a>
-            <!-- Card Content - Collapse -->
-            <div class="collapse show" id="collapseCardExample">
-                <div class="card-body">
-                    This is a collapsable card example using Bootstrap's built in collapse
-                    functionality. <strong>Click on the card header</strong> to see the card body
-                    collapse and expand!
-                </div>
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">New Book</h6>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">{{ form.name.label }}</label>
+                        <input type="text" class="form-control" name="form.name">     
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{{ form.birthday.label }}</label>
+                        <input type="datetime" class="form-control" name="form.birthday |date:'Y-m-d'">     
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -26,3 +33,5 @@
     </div>
 </div>
 {% endblock %}
+
+<script src="{% static 'author.js'%}"></script>

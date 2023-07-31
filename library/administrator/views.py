@@ -3,6 +3,9 @@ from django.views import View
 from .forms import (
     AuthorForm
 )
+from .models import (
+    Authors
+)
 # Create your views here.
 class BooksList(View): 
 
@@ -70,6 +73,15 @@ class AuthorList(View):
 
         return render(request, self.template, context)
     
+    def post(self, request):
+
+        form = AuthorForm()
+        import ipdb 
+        ipdb.set_trace()
+        if form.is_valid():
+            author = Authors()
+            author.name = fo
+
     
 class CategoriesList(View): 
 
